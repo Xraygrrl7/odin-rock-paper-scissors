@@ -73,3 +73,32 @@ const humanSelection = getHumanChoice();
 const computerSelection = getComputerChoice();
 
 playRound(humanSelection, computerSelection);
+
+/*function playGame 
+create variables:
+let humanScore = 0;
+let computerScore = 0;
+
+
+Loop 5 rounds 
+get comp and human choices
+call playRound
+if humanSelection is wins add point
+if computerSelection wins add point
+
+after 5 rounds
+compare humanscore to computerscore
+declare the winner or say its a tie.
+*/
+function playGame() {
+	let humanScore = 0;
+	let computerScore = 0;
+
+	for (let i = 0; i < 5; i++) {
+		const humanSelection = getHumanChoice();
+		const computerSelection = getComputerChoice();
+
+		let total = playRound(humanSelection, computerSelection);
+		console.log(total);
+	}
+}
