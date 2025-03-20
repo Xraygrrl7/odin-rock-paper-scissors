@@ -5,7 +5,7 @@ else scissors */
 
 function getComputerChoice() {
 	let num = Math.random();
-	console.log(num);
+	// console.log(num);
 
 	if (num < 0.33) {
 		return 'rock';
@@ -16,7 +16,7 @@ function getComputerChoice() {
 	}
 }
 
-console.log(getComputerChoice);
+// console.log(getComputerChoice);
 
 // Part 2 logic for getting human choice
 /* function getHumanChoice
@@ -50,29 +50,23 @@ function playRound(humanChoice, computerChoice) {
 	);
 
 	if (humanChoice === computerChoice) {
-		alert('It is a draw');
-	} else if (humanChoice === 'scissors' && computerChoice === 'paper') {
-		alert('You win, scissors beats paper!');
-	} else if (humanChoice === 'scissors' && computerChoice === 'rock') {
-		alert('You lose, rock beats scissors!');
-	} else if (humanChoice === 'paper' && computerChoice === 'scissors') {
-		alert('You lose, scissors beats paper!');
-	} else if (humanChoice === 'paper' && computerChoice === 'rock') {
-		alert('You win, paper beats rock!');
-	} else if (humanChoice === 'rock' && computerChoice === 'paper') {
-		alert('You lose, paper beats rock!');
-	} else if (humanChoice === 'rock' && computerChoice === 'scissors') {
-		alert('You win, rock beats scissors!');
+		return 'It is a draw';
+	} else if (
+		(humanChoice === 'scissors' && computerChoice === 'paper') ||
+		(humanChoice === 'paper' && computerChoice === 'rock') ||
+		(humanChoice === 'rock' && computerChoice === 'scissors')
+	) {
+		return 'You win!';
 	} else {
-		alert('Invalid choice, please enter rock, paper, or scissors.');
+		return 'You lose!';
 	}
 }
 
-const humanSelection = getHumanChoice();
+// const humanSelection = getHumanChoice();
 
-const computerSelection = getComputerChoice();
+// const computerSelection = getComputerChoice();
 
-playRound(humanSelection, computerSelection);
+// playRound(humanSelection, computerSelection);
 
 /*function playGame 
 create variables:
@@ -99,6 +93,28 @@ function playGame() {
 		const computerSelection = getComputerChoice();
 
 		let total = playRound(humanSelection, computerSelection);
-		console.log(total);
+		console.log(`Round ${i + 1}: ${total}`);
+
+		if (total === 'You win!') {
+			humanScore++;
+		} else if (total === 'You lose!') {
+			computerScore++;
+		}
+	}
+
+    
+	if (humanScore > computerScore) {
+		alert(
+			`you win the game the final score is you: ${humanScore} and computer: ${computerScore}`
+		);
+	} else if (computerScore > humanScore) {
+		alert(
+			`you lose the game the final score is you: ${humanScore} and computer: ${computerScore}`
+		);
+	} else {
+		alert(
+			`The game is a tie, the final score is you: ${humanScore} and computer: ${computerScore}`
+		);
 	}
 }
+playGame();
